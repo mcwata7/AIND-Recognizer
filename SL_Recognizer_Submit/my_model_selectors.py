@@ -81,7 +81,7 @@ class SelectorBIC(ModelSelector):
         low_bic = float("inf")
         best_model = None
         
-        for n in range(self.min_n_components, self.max_n_components+1):
+        for n in range(self.min_n_components, self.max_n_components):
             try:
                 model = self.base_model(n)
                 log_likelihood = model.score(self.X, self.lengths)
@@ -117,7 +117,7 @@ class SelectorDIC(ModelSelector):
         best_dic = float("-inf")
         best_model = None
         
-        for n in range(self.min_n_components, self.max_n_components +1):
+        for n in range(self.min_n_components, self.max_n_components):
             try:
                 model = self.base_model(n)
                 log_likelihood_X = model.score(self.X, self.lengths)
@@ -146,7 +146,7 @@ class SelectorCV(ModelSelector):
         best_model = None
         best_score = float("-inf")
         
-        for n in range(self.min_n_components, self.max_n_components+1):
+        for n in range(self.min_n_components, self.max_n_components):
             sum_score = 0
             try:
                 if len(self.sequences) > 2:
